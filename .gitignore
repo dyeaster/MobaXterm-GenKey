@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 生成的许可证产物（不要入库）
+*.mxtpro
+Pro.key
+
+# 本地 IDE / 工作数据
+.workbuddy-ai/
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
