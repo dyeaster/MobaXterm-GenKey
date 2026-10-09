@@ -4,9 +4,12 @@ import os
 import sys
 import zipfile
 import io  # <--- 引入 io 模块，用于内存操作
-from flask import Flask, request, send_file, make_response
+from flask import Flask, request, send_file, send_from_directory, make_response
 
 app = Flask(__name__)
+
+# 项目根目录（用于定位 index.html，避免依赖当前工作目录）
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- 核心加解密和编码逻辑 (这部分无需改动) ---
 VariantBase64Table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
@@ -83,7 +86,7 @@ def GenerateLicenseInMemory(Type: LicenseType, Count: int, UserName: str, MajorV
 @app.route('/')
 def index():
     """提供一个简单的使用说明页面"""
-    return send_file('index.html')
+    return send_from_directory(BASE_DIR, 'index.html')
 
 
 @app.route('/gen')
